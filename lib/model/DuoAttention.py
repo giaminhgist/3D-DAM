@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from torch import nn
-from lib.model.attention_block import SpatialAttention3D, ChannelAttention3D, residual_block, SELayer
+from lib.model.attention_block import SpatialAttention3D, ChannelAttention3D, residual_block
 
 
 class DAM(nn.Module):
@@ -10,13 +10,11 @@ class DAM(nn.Module):
 
         self.sa = SpatialAttention3D(out_channel=channels)
         self.ca = ChannelAttention3D(in_planes=channels)
-        self.se = SELayer(in_channels=channels)
 
     def forward(self, x):
         residual = x
         out = self.ca(x)
         out = self.sa(out)
-        # out = self.se(x)
         out = out + residual
         return out
 
@@ -35,24 +33,21 @@ class Duo_Attention(nn.Module):
             nn.Conv3d(8, 16, 3, padding=1, stride=2),
             nn.BatchNorm3d(16),
             nn.ReLU(),
-            SELayer(in_channels=16),
-            # residual_block(channel_size=16),
-            # nn.MaxPool3d(2, 2),
+            residual_block(channel_size=16),
+            nn.MaxPool3d(2, 2),
 
             nn.Conv3d(16, 32, 3, padding=1, stride=2),
             nn.BatchNorm3d(32),
             nn.ReLU(),
-            SELayer(in_channels=32),
-            # residual_block(channel_size=32),
+            residual_block(channel_size=32),
             DAM(channels=32),
-            # nn.MaxPool3d(2, 2),
+            nn.MaxPool3d(2, 2),
 
             nn.Conv3d(32, 64, 3, padding=1, stride=2),
             nn.BatchNorm3d(64),
             nn.ReLU(),
-            SELayer(64),
-            # residual_block(channel_size=64),
-            # nn.MaxPool3d(2, 2),
+            residual_block(channel_size=64),
+            nn.MaxPool3d(2, 2),
             DAM(channels=64),
 
             nn.AvgPool3d(3, stride=1),
@@ -62,10 +57,9 @@ class Duo_Attention(nn.Module):
         output_convolutions = self.conv(input_tensor)
         self.fc = nn.Sequential(
             nn.Flatten(),
-            # nn.Dropout(p=dropout),
+            nn.Dropout(p=dropout),
             nn.Linear(np.prod(list(output_convolutions.shape)).item(), 1024),
             nn.Linear(1024, num_classes),
-            # nn.Softmax(dim=1),
         )
 
     def forward(self, x):
