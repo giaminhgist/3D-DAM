@@ -1,15 +1,10 @@
 import os
 import numpy as np
 from .DuoAttention import Duo_Attention
-from .vit import ViT
 import torch
-from .AttentionNet import AttentionNet
 
 model_dict = {
     'DuoAttention':Duo_Attention,
-    'VIT': ViT,
-    'PDAM': AttentionNet,
-    'NET': AttentionNet,
 }
 
 
