@@ -20,12 +20,11 @@ Alzheimer's disease is one of the most common types of neurodegenerative disease
 
 If you find this project useful for your research, please use the following BibTeX entries.
 
-@misc{
-      hoang2023reproducible,      
-      title={A reproducible 3D convolutional neural network with dual attention module (3D-DAM) for Alzheimer's disease classification},
+    @misc{hoang2023reproducible,
+      title={A reproducible 3D convolutional neural network with dual attention module (3D-DAM) for Alzheimer's disease classification}, 
       author={Gia Minh Hoang and Youngjoo Lee and Jae Gwan Kim},
       year={2023},
       eprint={2310.12574},
       archivePrefix={arXiv},
       primaryClass={eess.IV}
-}
+    }
