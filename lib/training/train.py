@@ -7,7 +7,6 @@ from lib.utils.EarlyStopping import EarlyStopping
 from lib.training.train_helper import plot_result
 from sklearn.metrics import confusion_matrix
 import torch.nn.functional as F
-from GPUtil import showUtilization as gpu_usage
 from tqdm import tqdm
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
