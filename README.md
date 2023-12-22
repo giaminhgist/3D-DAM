@@ -19,7 +19,7 @@ Alzheimer's disease is one of the most common types of neurodegenerative disease
 | ADNI |  OASIS |  83.4 | 85.8 | 82.6 |
 | AIBL - OASIS |  ADNI | 85.4 |80.1 | 89.5 |
 
-
+![Test Performance](https://github.com/giaminhgist/3D-DAM/blob/main/photo/test_performance.png)
 
 ## Citation
 
