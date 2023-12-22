@@ -2,37 +2,6 @@ import torch.nn as nn
 import torch
 
 
-class SELayer(nn.Module):
-    """
-    Re-implementation of the Squeeze-and-Excitation block based on:
-    "Hu et al., Squeeze-and-Excitation Networks, https://arxiv.org/abs/1709.01507".
-    """
-
-    def __init__(
-            self,
-            in_channels: int,
-            factor: int = 2,
-    ):
-        super(SELayer, self).__init__()
-        self.pool = nn.AdaptiveAvgPool3d((1, 1, 1))
-        self.fc = nn.Sequential(
-            nn.Linear(in_channels, in_channels // factor, bias=True),
-            nn.ReLU(),
-            nn.Linear(in_channels // factor, in_channels, bias=True),
-            nn.ReLU(),
-        )
-
-    def forward(self, x):
-        b, c = x.shape[:2]
-        y = self.pool(x).view(b, c)
-        y = self.fc(y).view([b, c] + [1] * (x.ndim - 2))
-        result = x * y
-
-        out = result + x
-
-        return out
-
-
 class ChannelAttention3D(nn.Module):
     def __init__(self, in_planes=64, ratio=8):
         super(ChannelAttention3D, self).__init__()
