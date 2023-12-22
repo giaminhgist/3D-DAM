@@ -10,11 +10,11 @@ Alzheimer's disease is one of the most common types of neurodegenerative disease
 
 ### ADNI - AIBL - OASIS
 
-| Training| Test| Accuracy | Sensitivity | Specificity | 
+| Training| Test| Accuracy(%) | Sensitivity(%) | Specificity(%) | 
 |-------------|----------|-----------|--------|----------|
 | ADNI |  AIBL | 86.3 | 80.2 | 87.1 |
-| ADNI |  AIBL | 86.3 | 80.2 | 87.1 |
-| ADNI |  AIBL | 86.3 | 80.2 | 87.1 |
+| ADNI |  OASIS |  83.4 | 85.8 | 82.6 |
+| AIBL - OASIS |  ADNI | 85.4 |80.1 | 89.5 |
 
 ## Citation
 
