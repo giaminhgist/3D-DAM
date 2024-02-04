@@ -8,13 +8,11 @@ import argparse
 import torch
 import numpy as np
 
-# python train.py --experiment_name SEModuel_AD_CN_MCI --task AD_CN_MCI --fold 0 --train_type image_level --output_size 3 --learning_rate 1e-4 --w_decay 1e-4 --batch_size 16 --epoch_size 400 --patience 15
-
 parser = argparse.ArgumentParser(description='Training Config', add_help=False)
 parser.add_argument('--experiment_name', type=str, default='AD_CN')
 parser.add_argument('--task', type=str, default='AD_CN')
 parser.add_argument('--fold', type=int, default=0)
-parser.add_argument('--train_type', type=str, default='patient_level')
+parser.add_argument('--train_type', type=str, default='image_level')
 parser.add_argument('--output_size', type=int, default=3)
 parser.add_argument('--learning_rate', type=float, default=1e-4)
 parser.add_argument('--w_decay', type=float, default=1e-4)
