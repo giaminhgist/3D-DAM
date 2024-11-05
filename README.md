@@ -27,7 +27,6 @@ If you find this project useful for your research, please use the following BibT
 
     @misc{vu2024reproducible,
           title={A reproducible 3D convolutional neural network with dual attention module (3D-DAM) for Alzheimer's disease classification}, 
-          author={Thanh Phuong Vu and Tien Nhat Nguyen and N. Minh Nhat Hoang and Gia Minh Hoang},
           year={2024},
           eprint={2310.12574},
           archivePrefix={arXiv},
